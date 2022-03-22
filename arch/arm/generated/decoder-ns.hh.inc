@@ -33473,7 +33473,7 @@ class VfpMacroRegRegOp : public VfpMacroOp
     {
         numMicroops = machInst.fpscrLen + 1;
         assert(numMicroops > 1);
-        microOps = new StaticInstPtr[numMicroops];
+        microOps = new std::string[numMicroops];
         for (unsigned i = 0; i < numMicroops; i++) {
             VfpMicroMode mode = VfpMicroop;
             if (i == 0)
@@ -33487,7 +33487,7 @@ class VfpMacroRegRegOp : public VfpMacroOp
 };
 
 template <class VfpOp>
-StaticInstPtr
+std::string
 decodeVfpRegRegOp(ExtMachInst machInst,
         IntRegIndex dest, IntRegIndex op1, bool wide)
 {
@@ -33507,7 +33507,7 @@ class VfpMacroRegImmOp : public VfpMacroOp
         VfpMacroOp("VfpMacroRegImmOp", _machInst, No_OpClass, _wide)
     {
         numMicroops = machInst.fpscrLen + 1;
-        microOps = new StaticInstPtr[numMicroops];
+        microOps = new std::string[numMicroops];
         for (unsigned i = 0; i < numMicroops; i++) {
             VfpMicroMode mode = VfpMicroop;
             if (i == 0)
@@ -33521,7 +33521,7 @@ class VfpMacroRegImmOp : public VfpMacroOp
 };
 
 template <class VfpOp>
-StaticInstPtr
+std::string
 decodeVfpRegImmOp(ExtMachInst machInst,
         IntRegIndex dest, uint64_t imm, bool wide)
 {
@@ -33541,7 +33541,7 @@ class VfpMacroRegRegImmOp : public VfpMacroOp
         VfpMacroOp("VfpMacroRegRegImmOp", _machInst, No_OpClass, _wide)
     {
         numMicroops = machInst.fpscrLen + 1;
-        microOps = new StaticInstPtr[numMicroops];
+        microOps = new std::string[numMicroops];
         for (unsigned i = 0; i < numMicroops; i++) {
             VfpMicroMode mode = VfpMicroop;
             if (i == 0)
@@ -33555,7 +33555,7 @@ class VfpMacroRegRegImmOp : public VfpMacroOp
 };
 
 template <class VfpOp>
-StaticInstPtr
+std::string
 decodeVfpRegRegImmOp(ExtMachInst machInst, IntRegIndex dest,
                      IntRegIndex op1, uint64_t imm, bool wide)
 {
@@ -33575,7 +33575,7 @@ class VfpMacroRegRegRegOp : public VfpMacroOp
         VfpMacroOp("VfpMacroRegRegRegOp", _machInst, No_OpClass, _wide)
     {
         numMicroops = machInst.fpscrLen + 1;
-        microOps = new StaticInstPtr[numMicroops];
+        microOps = new std::string[numMicroops];
         for (unsigned i = 0; i < numMicroops; i++) {
             VfpMicroMode mode = VfpMicroop;
             if (i == 0)
@@ -33589,7 +33589,7 @@ class VfpMacroRegRegRegOp : public VfpMacroOp
 };
 
 template <class VfpOp>
-StaticInstPtr
+std::string
 decodeVfpRegRegRegOp(ExtMachInst machInst, IntRegIndex dest,
                      IntRegIndex op1, IntRegIndex op2, bool wide)
 {
@@ -37713,7 +37713,7 @@ class Xpaclri : public RegOp
 };
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonUThreeUReg(unsigned size,
                          ExtMachInst machInst, IntRegIndex dest,
                          IntRegIndex op1, IntRegIndex op2)
@@ -37733,7 +37733,7 @@ class Xpaclri : public RegOp
     }
 
     template <class BaseS, class BaseD>
-    StaticInstPtr
+    std::string
     decodeNeonSizeSingleDouble(unsigned size,
                          ExtMachInst machInst, IntRegIndex dest,
                          IntRegIndex op1, IntRegIndex op2)
@@ -37749,7 +37749,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonSThreeUReg(unsigned size,
                          ExtMachInst machInst, IntRegIndex dest,
                          IntRegIndex op1, IntRegIndex op2)
@@ -37769,7 +37769,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonUSThreeUReg(bool notSigned, unsigned size,
                           ExtMachInst machInst, IntRegIndex dest,
                           IntRegIndex op1, IntRegIndex op2)
@@ -37782,7 +37782,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonUThreeUSReg(unsigned size,
                           ExtMachInst machInst, IntRegIndex dest,
                           IntRegIndex op1, IntRegIndex op2)
@@ -37800,7 +37800,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonSThreeUSReg(unsigned size,
                           ExtMachInst machInst, IntRegIndex dest,
                           IntRegIndex op1, IntRegIndex op2)
@@ -37818,7 +37818,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonSThreeHAndWReg(unsigned size, ExtMachInst machInst,
                              IntRegIndex dest, IntRegIndex op1,
                              IntRegIndex op2)
@@ -37834,7 +37834,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonSThreeImmHAndWReg(unsigned size, ExtMachInst machInst,
                                 IntRegIndex dest, IntRegIndex op1,
                                 IntRegIndex op2, uint64_t imm)
@@ -37850,7 +37850,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonUSThreeUSReg(bool notSigned, unsigned size,
                            ExtMachInst machInst, IntRegIndex dest,
                            IntRegIndex op1, IntRegIndex op2)
@@ -37866,7 +37866,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUThreeSReg(bool q, unsigned size,
                          ExtMachInst machInst, IntRegIndex dest,
                          IntRegIndex op1, IntRegIndex op2)
@@ -37882,7 +37882,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonSThreeSReg(bool q, unsigned size,
                          ExtMachInst machInst, IntRegIndex dest,
                          IntRegIndex op1, IntRegIndex op2)
@@ -37898,7 +37898,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonSThreeXReg(bool q, unsigned size,
                          ExtMachInst machInst, IntRegIndex dest,
                          IntRegIndex op1, IntRegIndex op2)
@@ -37914,7 +37914,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUThreeXReg(bool q, unsigned size,
                          ExtMachInst machInst, IntRegIndex dest,
                          IntRegIndex op1, IntRegIndex op2)
@@ -37930,7 +37930,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUSThreeSReg(bool q, bool notSigned, unsigned size,
                           ExtMachInst machInst, IntRegIndex dest,
                           IntRegIndex op1, IntRegIndex op2)
@@ -37946,7 +37946,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUThreeReg(bool q, unsigned size,
                         ExtMachInst machInst, IntRegIndex dest,
                         IntRegIndex op1, IntRegIndex op2)
@@ -37962,7 +37962,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonSThreeReg(bool q, unsigned size,
                         ExtMachInst machInst, IntRegIndex dest,
                         IntRegIndex op1, IntRegIndex op2)
@@ -37978,7 +37978,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUSThreeReg(bool q, bool notSigned, unsigned size,
                          ExtMachInst machInst, IntRegIndex dest,
                          IntRegIndex op1, IntRegIndex op2)
@@ -37994,7 +37994,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUThreeFpReg(bool q, unsigned size, ExtMachInst machInst,
                           IntRegIndex dest, IntRegIndex op1, IntRegIndex op2)
     {
@@ -38012,7 +38012,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonUThreeScFpReg(bool size, ExtMachInst machInst,
                             IntRegIndex dest, IntRegIndex op1, IntRegIndex op2)
     {
@@ -38023,7 +38023,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonUThreeImmScFpReg(bool size, ExtMachInst machInst,
                                IntRegIndex dest, IntRegIndex op1,
                                IntRegIndex op2, uint64_t imm)
@@ -38036,7 +38036,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUThreeImmHAndWReg(bool q, unsigned size, ExtMachInst machInst,
                                 IntRegIndex dest, IntRegIndex op1,
                                 IntRegIndex op2, uint64_t imm)
@@ -38064,7 +38064,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonSThreeImmHAndWReg(bool q, unsigned size, ExtMachInst machInst,
                                 IntRegIndex dest, IntRegIndex op1,
                                 IntRegIndex op2, uint64_t imm)
@@ -38092,7 +38092,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUThreeImmFpReg(bool q, unsigned size, ExtMachInst machInst,
                              IntRegIndex dest, IntRegIndex op1,
                              IntRegIndex op2, uint64_t imm)
@@ -38112,7 +38112,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUTwoShiftReg(bool q, unsigned size,
                            ExtMachInst machInst, IntRegIndex dest,
                            IntRegIndex op1, uint64_t imm)
@@ -38148,7 +38148,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonSTwoShiftReg(bool q, unsigned size,
                            ExtMachInst machInst, IntRegIndex dest,
                            IntRegIndex op1, uint64_t imm)
@@ -38185,7 +38185,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUSTwoShiftReg(bool q, bool notSigned, unsigned size,
                             ExtMachInst machInst, IntRegIndex dest,
                             IntRegIndex op1, uint64_t imm)
@@ -38200,7 +38200,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonUTwoShiftUSReg(unsigned size,
                              ExtMachInst machInst, IntRegIndex dest,
                              IntRegIndex op1, uint64_t imm)
@@ -38218,7 +38218,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonUTwoShiftUReg(unsigned size,
                             ExtMachInst machInst, IntRegIndex dest,
                             IntRegIndex op1, uint64_t imm)
@@ -38238,7 +38238,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonSTwoShiftUReg(unsigned size,
                             ExtMachInst machInst, IntRegIndex dest,
                             IntRegIndex op1, uint64_t imm)
@@ -38259,7 +38259,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUTwoShiftSReg(bool q, unsigned size,
                             ExtMachInst machInst, IntRegIndex dest,
                             IntRegIndex op1, uint64_t imm)
@@ -38274,7 +38274,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonSTwoShiftUSReg(unsigned size,
                              ExtMachInst machInst, IntRegIndex dest,
                              IntRegIndex op1, uint64_t imm)
@@ -38293,7 +38293,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonSTwoShiftSReg(bool q, unsigned size,
                             ExtMachInst machInst, IntRegIndex dest,
                             IntRegIndex op1, uint64_t imm)
@@ -38309,7 +38309,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUSTwoShiftSReg(bool q, bool notSigned, unsigned size,
                              ExtMachInst machInst, IntRegIndex dest,
                              IntRegIndex op1, uint64_t imm)
@@ -38325,7 +38325,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUTwoShiftXReg(bool q, unsigned size, ExtMachInst machInst,
                             IntRegIndex dest, IntRegIndex op1, uint64_t imm)
     {
@@ -38340,7 +38340,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonSTwoShiftXReg(bool q, unsigned size, ExtMachInst machInst,
                             IntRegIndex dest, IntRegIndex op1, uint64_t imm)
     {
@@ -38354,7 +38354,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonUTwoShiftUFpReg(unsigned size, ExtMachInst machInst,
                               IntRegIndex dest, IntRegIndex op1, uint64_t imm)
     {
@@ -38366,7 +38366,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUTwoShiftFpReg(bool q, unsigned size, ExtMachInst machInst,
                              IntRegIndex dest, IntRegIndex op1, uint64_t imm)
     {
@@ -38384,7 +38384,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonUTwoMiscUSReg(unsigned size,
                             ExtMachInst machInst, IntRegIndex dest,
                             IntRegIndex op1)
@@ -38402,7 +38402,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonSTwoMiscUSReg(unsigned size,
                             ExtMachInst machInst, IntRegIndex dest,
                             IntRegIndex op1)
@@ -38421,7 +38421,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUTwoMiscSReg(bool q, unsigned size,
                            ExtMachInst machInst, IntRegIndex dest,
                            IntRegIndex op1)
@@ -38435,7 +38435,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonSTwoMiscSReg(bool q, unsigned size,
                            ExtMachInst machInst, IntRegIndex dest,
                            IntRegIndex op1)
@@ -38448,7 +38448,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonUTwoMiscUReg(unsigned size,
                            ExtMachInst machInst, IntRegIndex dest,
                            IntRegIndex op1)
@@ -38468,7 +38468,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonSTwoMiscUReg(unsigned size,
                            ExtMachInst machInst, IntRegIndex dest,
                            IntRegIndex op1)
@@ -38489,7 +38489,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonSTwoMiscReg(bool q, unsigned size,
                           ExtMachInst machInst, IntRegIndex dest,
                           IntRegIndex op1)
@@ -38503,7 +38503,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUTwoMiscReg(bool q, unsigned size,
                           ExtMachInst machInst, IntRegIndex dest,
                           IntRegIndex op1)
@@ -38517,7 +38517,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUSTwoMiscSReg(bool q, bool notSigned, unsigned size,
                             ExtMachInst machInst, IntRegIndex dest,
                             IntRegIndex op1)
@@ -38533,7 +38533,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUTwoMiscXReg(bool q, unsigned size, ExtMachInst machInst,
                            IntRegIndex dest, IntRegIndex op1)
     {
@@ -38546,7 +38546,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonSTwoMiscXReg(bool q, unsigned size, ExtMachInst machInst,
                            IntRegIndex dest, IntRegIndex op1)
     {
@@ -38559,7 +38559,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUTwoMiscFpReg(bool q, unsigned size, ExtMachInst machInst,
                             IntRegIndex dest, IntRegIndex op1)
     {
@@ -38578,7 +38578,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUTwoMiscPwiseScFpReg(unsigned size, ExtMachInst machInst,
                                    IntRegIndex dest, IntRegIndex op1)
     {
@@ -38589,7 +38589,7 @@ class Xpaclri : public RegOp
     }
 
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeNeonUTwoMiscScFpReg(unsigned size, ExtMachInst machInst,
                               IntRegIndex dest, IntRegIndex op1)
     {
@@ -38601,7 +38601,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonUAcrossLanesReg(bool q, unsigned size, ExtMachInst machInst,
                               IntRegIndex dest, IntRegIndex op1)
     {
@@ -38631,7 +38631,7 @@ class Xpaclri : public RegOp
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ,
               template <typename T> class BaseBQ>
-    StaticInstPtr
+    std::string
     decodeNeonUAcrossLanesReg(bool q, unsigned size, ExtMachInst machInst,
                               IntRegIndex dest, IntRegIndex op1)
     {
@@ -38660,7 +38660,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    StaticInstPtr
+    std::string
     decodeNeonSAcrossLanesReg(bool q, unsigned size, ExtMachInst machInst,
                               IntRegIndex dest, IntRegIndex op1)
     {
@@ -38690,7 +38690,7 @@ class Xpaclri : public RegOp
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ,
               template <typename T> class BaseBQ>
-    StaticInstPtr
+    std::string
     decodeNeonUAcrossLanesLongReg(bool q, unsigned size, ExtMachInst machInst,
                                   IntRegIndex dest, IntRegIndex op1)
     {
@@ -38720,7 +38720,7 @@ class Xpaclri : public RegOp
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ,
               template <typename T> class BaseBQ>
-    StaticInstPtr
+    std::string
     decodeNeonSAcrossLanesLongReg(bool q, unsigned size, ExtMachInst machInst,
                                   IntRegIndex dest, IntRegIndex op1)
     {
@@ -87169,7 +87169,7 @@ class Zip2QX : public DataX2RegOp
     // handling signed and unsigned variants.
     template <template <typename T> class BaseS,
               template <typename T> class BaseU>
-    StaticInstPtr
+    std::string
     decodeSveUnaryPred(unsigned size, unsigned u, ExtMachInst machInst,
                        IntRegIndex dest, IntRegIndex op1, IntRegIndex gp)
     {
@@ -87207,7 +87207,7 @@ class Zip2QX : public DataX2RegOp
     // handling signed and unsigned variants.
     template <template <typename T1, typename T2> class BaseS,
               template <typename T1, typename T2> class BaseU>
-    StaticInstPtr
+    std::string
     decodeSveWideningReduc(unsigned size, unsigned u, ExtMachInst machInst,
                            IntRegIndex dest, IntRegIndex op1, IntRegIndex gp)
     {
@@ -87241,7 +87241,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes unary, constructive, predicated (merging) SVE instructions,
     // handling signed variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveUnaryPredS(unsigned size, ExtMachInst machInst,
                         IntRegIndex dest, IntRegIndex op1, IntRegIndex gp)
     {
@@ -87262,7 +87262,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes unary, constructive, predicated (merging) SVE instructions,
     // handling unsigned variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveUnaryPredU(unsigned size, ExtMachInst machInst,
                         IntRegIndex dest, IntRegIndex op1, IntRegIndex gp)
     {
@@ -87285,7 +87285,7 @@ class Zip2QX : public DataX2RegOp
     // 32-bit).
     template <template <typename T> class BaseS,
               template <typename T> class BaseU>
-    StaticInstPtr
+    std::string
     decodeSveUnaryPredSmall(unsigned size, unsigned u, ExtMachInst machInst,
                             IntRegIndex dest, IntRegIndex op1, IntRegIndex gp)
     {
@@ -87316,7 +87316,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes unary, constructive, predicated (merging) SVE instructions,
     // handling floating point variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveUnaryPredF(unsigned size, ExtMachInst machInst,
                         IntRegIndex dest, IntRegIndex op1, IntRegIndex gp)
     {
@@ -87335,7 +87335,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes unary, constructive, unpredicated SVE instructions, handling
     // unsigned variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveUnaryUnpredU(unsigned size, ExtMachInst machInst,
                           IntRegIndex dest, IntRegIndex op1)
     {
@@ -87356,7 +87356,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes unary, constructive, unpredicated SVE instructions, handling
     // floating-point variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveUnaryUnpredF(unsigned size, ExtMachInst machInst,
                           IntRegIndex dest, IntRegIndex op1)
     {
@@ -87376,7 +87376,7 @@ class Zip2QX : public DataX2RegOp
     // handling signed and unsigned variants.
     template <template <typename T> class BaseS,
               template <typename T> class BaseU>
-    StaticInstPtr
+    std::string
     decodeSveBinDestrPred(unsigned size, unsigned u, ExtMachInst machInst,
                           IntRegIndex dest, IntRegIndex op2, IntRegIndex gp)
     {
@@ -87413,7 +87413,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes binary with immediate operand, constructive, unpredicated
     // SVE instructions, handling signed variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveBinImmUnpredS(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, IntRegIndex op1, unsigned immediate)
     {
@@ -87435,7 +87435,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes binary with immediate operand, constructive, unpredicated
     // SVE instructions, handling unsigned variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveBinImmUnpredU(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, IntRegIndex op1, unsigned immediate)
     {
@@ -87456,7 +87456,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes binary with immediate operand, destructive, predicated (merging)
     // SVE instructions, handling unsigned variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveBinImmPredU(unsigned size, ExtMachInst machInst, IntRegIndex dest,
             unsigned immediate, IntRegIndex gp)
     {
@@ -87477,7 +87477,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes binary with immediate operand, destructive, predicated (merging)
     // SVE instructions, handling signed variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveBinImmPredS(unsigned size, ExtMachInst machInst, IntRegIndex dest,
             unsigned immediate, IntRegIndex gp)
     {
@@ -87498,7 +87498,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes binary with immediate operand, destructive, predicated (merging)
     // SVE instructions, handling floating-point variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveBinImmPredF(unsigned size, ExtMachInst machInst, IntRegIndex dest,
             uint64_t immediate, IntRegIndex gp)
     {
@@ -87517,7 +87517,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes unary/binary with wide immediate operand, destructive,
     // unpredicated SVE instructions, handling unsigned variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveWideImmUnpredU(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, uint64_t immediate)
     {
@@ -87538,7 +87538,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes unary/binary with wide immediate operand, destructive,
     // unpredicated SVE instructions, handling signed variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveWideImmUnpredS(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, uint64_t immediate)
     {
@@ -87559,7 +87559,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes unary/binary with wide immediate operand, destructive,
     // unpredicated SVE instructions, handling floating-point variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveWideImmUnpredF(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, uint64_t immediate)
     {
@@ -87578,7 +87578,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes unary/binary with wide immediate operand, destructive,
     // predicated SVE instructions, handling unsigned variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveWideImmPredU(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, uint64_t immediate, IntRegIndex gp,
             bool isMerging = true)
@@ -87604,7 +87604,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes unary/binary with wide immediate operand, destructive,
     // predicated SVE instructions, handling floating-point variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveWideImmPredF(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, uint64_t immediate, IntRegIndex gp)
     {
@@ -87623,7 +87623,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes binary, destructive, predicated (merging) SVE instructions,
     // handling unsigned variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveBinDestrPredU(unsigned size, ExtMachInst machInst,
                            IntRegIndex dest, IntRegIndex op2, IntRegIndex gp)
     {
@@ -87644,7 +87644,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes binary, destructive, predicated (merging) SVE instructions,
     // handling signed variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveBinDestrPredS(unsigned size, ExtMachInst machInst,
                            IntRegIndex dest, IntRegIndex op2, IntRegIndex gp)
     {
@@ -87665,7 +87665,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes binary, destructive, predicated (merging) SVE instructions,
     // handling floating-point variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveBinDestrPredF(unsigned size, ExtMachInst machInst,
                            IntRegIndex dest, IntRegIndex op2, IntRegIndex gp)
     {
@@ -87684,7 +87684,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes binary, constructive, predicated SVE instructions, handling
     // unsigned variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveBinConstrPredU(unsigned size, ExtMachInst machInst,
                             IntRegIndex dest, IntRegIndex op1, IntRegIndex op2,
                             IntRegIndex gp, SvePredType predType)
@@ -87705,7 +87705,7 @@ class Zip2QX : public DataX2RegOp
 
     // Decodes binary, constructive, unpredicated SVE instructions.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveBinUnpred(unsigned size, unsigned u, ExtMachInst machInst,
                        IntRegIndex dest, IntRegIndex op1, IntRegIndex op2)
     {
@@ -87742,7 +87742,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes binary, constructive, unpredicated SVE instructions.
     // Unsigned instructions only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveBinUnpredU(unsigned size, ExtMachInst machInst, IntRegIndex dest,
             IntRegIndex op1, IntRegIndex op2)
     {
@@ -87763,7 +87763,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes binary, constructive, unpredicated SVE instructions.
     // Signed instructions only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveBinUnpredS(unsigned size, ExtMachInst machInst, IntRegIndex dest,
             IntRegIndex op1, IntRegIndex op2)
     {
@@ -87784,7 +87784,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes binary, costructive, unpredicated SVE instructions, handling
     // floating-point variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveBinUnpredF(unsigned size, ExtMachInst machInst, IntRegIndex dest,
             IntRegIndex op1, IntRegIndex op2)
     {
@@ -87803,7 +87803,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes SVE compare instructions - binary, predicated (zeroing),
     // generating a predicate - handling floating-point variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveCmpF(unsigned size, ExtMachInst machInst,
                   IntRegIndex dest, IntRegIndex op1, IntRegIndex op2,
                   IntRegIndex gp)
@@ -87824,7 +87824,7 @@ class Zip2QX : public DataX2RegOp
     // (zeroing), generating a predicate - handling floating-point variants
     // only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveCmpImmF(unsigned size, ExtMachInst machInst,
                      IntRegIndex dest, IntRegIndex op1, uint64_t imm,
                      IntRegIndex gp)
@@ -87843,7 +87843,7 @@ class Zip2QX : public DataX2RegOp
 
     // Decodes ternary, destructive, predicated (merging) SVE instructions.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveTerPred(unsigned size, unsigned u, ExtMachInst machInst,
                      IntRegIndex dest, IntRegIndex op1, IntRegIndex op2,
                      IntRegIndex gp)
@@ -87881,7 +87881,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes ternary, destructive, predicated (merging) SVE instructions,
     // handling wide signed variants only. XXX: zeroing for CMP instructions.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveTerPredWS(unsigned size, ExtMachInst machInst,
                       IntRegIndex dest, IntRegIndex op1, IntRegIndex op2,
                       IntRegIndex gp)
@@ -87901,7 +87901,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes ternary, destructive, predicated (merging) SVE instructions,
     // handling wide unsigned variants only. XXX: zeroing for CMP instructions.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveTerPredWU(unsigned size, ExtMachInst machInst,
                       IntRegIndex dest, IntRegIndex op1, IntRegIndex op2,
                       IntRegIndex gp)
@@ -87921,7 +87921,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes ternary, destructive, predicated (merging) SVE instructions,
     // handling signed variants only. XXX: zeroing for CMP instructions.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveTerPredS(unsigned size, ExtMachInst machInst,
                       IntRegIndex dest, IntRegIndex op1, IntRegIndex op2,
                       IntRegIndex gp)
@@ -87943,7 +87943,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes ternary, destructive, predicated (merging) SVE instructions,
     // handling unsigned variants only. XXX: zeroing for CMP instructions.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveTerPredU(unsigned size, ExtMachInst machInst,
                       IntRegIndex dest, IntRegIndex op1, IntRegIndex op2,
                       IntRegIndex gp)
@@ -87965,7 +87965,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes SVE signed unary extension instructions (8-bit source element
     // size)
     template <template <typename TS, typename TD> class Base>
-    StaticInstPtr
+    std::string
     decodeSveUnaryExtendFromBPredS(unsigned dsize, ExtMachInst machInst,
                                    IntRegIndex dest, IntRegIndex op1,
                                    IntRegIndex gp)
@@ -87984,7 +87984,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes SVE unsigned unary extension instructions (8-bit source element
     // size)
     template <template <typename TS, typename TD> class Base>
-    StaticInstPtr
+    std::string
     decodeSveUnaryExtendFromBPredU(unsigned dsize, ExtMachInst machInst,
                                    IntRegIndex dest, IntRegIndex op1,
                                    IntRegIndex gp)
@@ -88003,7 +88003,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes SVE signed unary extension instructions (16-bit source element
     // size)
     template <template <typename TS, typename TD> class Base>
-    StaticInstPtr
+    std::string
     decodeSveUnaryExtendFromHPredS(unsigned dsize, ExtMachInst machInst,
                                    IntRegIndex dest, IntRegIndex op1,
                                    IntRegIndex gp)
@@ -88020,7 +88020,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes SVE unsigned unary extension instructions (16-bit source element
     // size)
     template <template <typename TS, typename TD> class Base>
-    StaticInstPtr
+    std::string
     decodeSveUnaryExtendFromHPredU(unsigned dsize, ExtMachInst machInst,
                                    IntRegIndex dest, IntRegIndex op1,
                                    IntRegIndex gp)
@@ -88037,7 +88037,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes ternary, destructive, predicated (merging) SVE instructions,
     // handling floating-point variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveTerPredF(unsigned size, ExtMachInst machInst,
                       IntRegIndex dest, IntRegIndex op1, IntRegIndex op2,
                       IntRegIndex gp)
@@ -88057,7 +88057,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes ternary with immediate operand, destructive, unpredicated SVE
     // instructions handling floating-point variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveTerImmUnpredF(unsigned size, ExtMachInst machInst,
                            IntRegIndex dest, IntRegIndex op2, uint8_t imm)
     {
@@ -88075,7 +88075,7 @@ class Zip2QX : public DataX2RegOp
 
     // Decodes SVE PTRUE(S) instructions.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSvePtrue(unsigned size, ExtMachInst machInst,
                    IntRegIndex dest, uint8_t imm)
     {
@@ -88095,7 +88095,7 @@ class Zip2QX : public DataX2RegOp
 
     // Decodes SVE predicate count instructions, scalar signed variant only
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSvePredCountS(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, IntRegIndex op1)
     {
@@ -88115,7 +88115,7 @@ class Zip2QX : public DataX2RegOp
 
     // Decodes SVE predicate count instructions, scalar unsigned variant only
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSvePredCountU(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, IntRegIndex op1)
     {
@@ -88135,7 +88135,7 @@ class Zip2QX : public DataX2RegOp
 
     // Decodes SVE predicate count instructions, vector signed variant only
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSvePredCountVS(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, IntRegIndex op1)
     {
@@ -88153,7 +88153,7 @@ class Zip2QX : public DataX2RegOp
 
     // Decodes SVE predicate count instructions, vector unsigned variant only
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSvePredCountVU(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, IntRegIndex op1)
     {
@@ -88172,7 +88172,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes ternary with immediate operand, predicated SVE
     // instructions handling unsigned variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveTerImmPredU(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, IntRegIndex op1, int64_t imm, IntRegIndex gp)
     {
@@ -88193,7 +88193,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes ternary with immediate operand, predicated SVE
     // instructions handling signed variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveTerImmPredS(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, IntRegIndex op1, int64_t imm, IntRegIndex gp)
     {
@@ -88214,7 +88214,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes integer element count SVE instructions, handling
     // signed variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveElemIntCountS(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, uint8_t pattern, uint8_t imm4)
     {
@@ -88235,7 +88235,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes integer element count SVE instructions, handling
     // unsigned variants only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveElemIntCountU(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, uint8_t pattern, uint8_t imm4)
     {
@@ -88256,7 +88256,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes integer element count SVE instructions, handling
     // signed variants from 16 to 64 bits only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveElemIntCountLS(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, uint8_t pattern, uint8_t imm4)
     {
@@ -88275,7 +88275,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes integer element count SVE instructions, handling
     // unsigned variants from 16 to 64 bits only.
     template <template <typename T> class Base>
-    StaticInstPtr
+    std::string
     decodeSveElemIntCountLU(unsigned size, ExtMachInst machInst,
             IntRegIndex dest, uint8_t pattern, uint8_t imm4)
     {
@@ -88293,7 +88293,7 @@ class Zip2QX : public DataX2RegOp
 
     // Decodes SVE unpack instructions. Handling signed variants.
     template <template <typename T1, typename T2> class Base>
-    StaticInstPtr
+    std::string
     decodeSveUnpackS(unsigned size, ExtMachInst machInst,
                     IntRegIndex dest, IntRegIndex op1)
     {
@@ -88311,7 +88311,7 @@ class Zip2QX : public DataX2RegOp
 
     // Decodes SVE unpack instructions. Handling unsigned variants.
     template <template <typename T1, typename T2> class Base>
-    StaticInstPtr
+    std::string
     decodeSveUnpackU(unsigned size, ExtMachInst machInst,
                     IntRegIndex dest, IntRegIndex op1)
     {
@@ -104383,7 +104383,7 @@ class SveZip2 : public SveBinUnpredOp
 
     // Decodes SVE contiguous load instructions, scalar plus scalar form.
     template <template <typename T1, typename T2> class Base>
-    StaticInstPtr
+    std::string
     decodeSveContigLoadSSInsts(uint8_t dtype, ExtMachInst machInst,
                                IntRegIndex zt, IntRegIndex pg, IntRegIndex rn,
                                IntRegIndex rm, bool firstFaulting)
@@ -104428,7 +104428,7 @@ class SveZip2 : public SveBinUnpredOp
 
     // Decodes SVE contiguous load instructions, scalar plus immediate form.
     template <template <typename T1, typename T2> class Base>
-    StaticInstPtr
+    std::string
     decodeSveContigLoadSIInsts(uint8_t dtype, ExtMachInst machInst,
                                IntRegIndex zt, IntRegIndex pg, IntRegIndex rn,
                                uint64_t imm, bool nonFaulting,
@@ -104475,7 +104475,7 @@ class SveZip2 : public SveBinUnpredOp
 
     // Decodes SVE contiguous store instructions, scalar plus scalar form.
     template <template <typename T1, typename T2> class Base>
-    StaticInstPtr
+    std::string
     decodeSveContigStoreSSInsts(uint8_t dtype, ExtMachInst machInst,
                                 IntRegIndex zt, IntRegIndex pg, IntRegIndex rn,
                                 IntRegIndex rm)
@@ -104508,7 +104508,7 @@ class SveZip2 : public SveBinUnpredOp
 
     // Decodes SVE contiguous store instructions, scalar plus immediate form.
     template <template <typename T1, typename T2> class Base>
-    StaticInstPtr
+    std::string
     decodeSveContigStoreSIInsts(uint8_t dtype, ExtMachInst machInst,
                                 IntRegIndex zt, IntRegIndex pg, IntRegIndex rn,
                                 int8_t imm)
@@ -106961,134 +106961,134 @@ class SHA256SU164 : public RegRegRegOp
 
 namespace Aarch64
 {
-    StaticInstPtr decodeDataProcImm(ExtMachInst machInst);
-    StaticInstPtr decodeBranchExcSys(ExtMachInst machInst);
-    StaticInstPtr decodeLoadsStores(ExtMachInst machInst);
-    StaticInstPtr decodeDataProcReg(ExtMachInst machInst);
+    std::string decodeDataProcImm(ExtMachInst machInst);
+    std::string decodeBranchExcSys(ExtMachInst machInst);
+    std::string decodeLoadsStores(ExtMachInst machInst);
+    std::string decodeDataProcReg(ExtMachInst machInst);
 
     template <typename DecoderFeatures>
-    StaticInstPtr decodeFpAdvSIMD(ExtMachInst machInst);
-    StaticInstPtr decodeFp(ExtMachInst machInst);
+    std::string decodeFpAdvSIMD(ExtMachInst machInst);
+    std::string decodeFp(ExtMachInst machInst);
     template <typename DecoderFeatures>
-    StaticInstPtr decodeAdvSIMD(ExtMachInst machInst);
-    StaticInstPtr decodeAdvSIMDScalar(ExtMachInst machInst);
+    std::string decodeAdvSIMD(ExtMachInst machInst);
+    std::string decodeAdvSIMDScalar(ExtMachInst machInst);
 
-    StaticInstPtr decodeSveInt(ExtMachInst machInst);
-    StaticInstPtr decodeSveFp(ExtMachInst machInst);
-    StaticInstPtr decodeSveMem(ExtMachInst machInst);
+    std::string decodeSveInt(ExtMachInst machInst);
+    std::string decodeSveFp(ExtMachInst machInst);
+    std::string decodeSveMem(ExtMachInst machInst);
 
-    StaticInstPtr decodeGem5Ops(ExtMachInst machInst);
+    std::string decodeGem5Ops(ExtMachInst machInst);
 }
 
 namespace Aarch64
 {
     // AdvSIMD three same
     template <typename DecoderFeatures>
-    StaticInstPtr decodeNeon3Same(ExtMachInst machInst);
+    std::string decodeNeon3Same(ExtMachInst machInst);
     // AdvSIMD three same Extra
     template <typename DecoderFeatures>
-    StaticInstPtr decodeNeon3SameExtra(ExtMachInst machInst);
+    std::string decodeNeon3SameExtra(ExtMachInst machInst);
     // AdvSIMD three different
-    inline StaticInstPtr decodeNeon3Diff(ExtMachInst machInst);
+    inline std::string decodeNeon3Diff(ExtMachInst machInst);
     // AdvSIMD two-reg misc
-    inline StaticInstPtr decodeNeon2RegMisc(ExtMachInst machInst);
+    inline std::string decodeNeon2RegMisc(ExtMachInst machInst);
     // AdvSIMD across lanes
-    inline StaticInstPtr decodeNeonAcrossLanes(ExtMachInst machInst);
+    inline std::string decodeNeonAcrossLanes(ExtMachInst machInst);
     // AdvSIMD copy
-    inline StaticInstPtr decodeNeonCopy(ExtMachInst machInst);
+    inline std::string decodeNeonCopy(ExtMachInst machInst);
     // AdvSIMD vector x indexed element
     template <typename DecoderFeatures>
-    StaticInstPtr decodeNeonIndexedElem(ExtMachInst machInst);
+    std::string decodeNeonIndexedElem(ExtMachInst machInst);
     // AdvSIMD modified immediate
-    inline StaticInstPtr decodeNeonModImm(ExtMachInst machInst);
+    inline std::string decodeNeonModImm(ExtMachInst machInst);
     // AdvSIMD shift by immediate
-    inline StaticInstPtr decodeNeonShiftByImm(ExtMachInst machInst);
+    inline std::string decodeNeonShiftByImm(ExtMachInst machInst);
     // AdvSIMD TBL/TBX
-    inline StaticInstPtr decodeNeonTblTbx(ExtMachInst machInst);
+    inline std::string decodeNeonTblTbx(ExtMachInst machInst);
     // AdvSIMD ZIP/UZP/TRN
-    inline StaticInstPtr decodeNeonZipUzpTrn(ExtMachInst machInst);
+    inline std::string decodeNeonZipUzpTrn(ExtMachInst machInst);
     // AdvSIMD EXT
-    inline StaticInstPtr decodeNeonExt(ExtMachInst machInst);
+    inline std::string decodeNeonExt(ExtMachInst machInst);
 
     // AdvSIMD scalar three same
-    inline StaticInstPtr decodeNeonSc3Same(ExtMachInst machInst);
+    inline std::string decodeNeonSc3Same(ExtMachInst machInst);
     // AdvSIMD scalar three same extra
-    inline StaticInstPtr decodeNeonSc3SameExtra(ExtMachInst machInst);
+    inline std::string decodeNeonSc3SameExtra(ExtMachInst machInst);
     // AdvSIMD scalar three different
-    inline StaticInstPtr decodeNeonSc3Diff(ExtMachInst machInst);
+    inline std::string decodeNeonSc3Diff(ExtMachInst machInst);
     // AdvSIMD scalar two-reg misc
-    inline StaticInstPtr decodeNeonSc2RegMisc(ExtMachInst machInst);
+    inline std::string decodeNeonSc2RegMisc(ExtMachInst machInst);
     // AdvSIMD scalar pairwise
-    inline StaticInstPtr decodeNeonScPwise(ExtMachInst machInst);
+    inline std::string decodeNeonScPwise(ExtMachInst machInst);
     // AdvSIMD scalar copy
-    inline StaticInstPtr decodeNeonScCopy(ExtMachInst machInst);
+    inline std::string decodeNeonScCopy(ExtMachInst machInst);
     // AdvSIMD scalar x indexed element
-    inline StaticInstPtr decodeNeonScIndexedElem(ExtMachInst machInst);
+    inline std::string decodeNeonScIndexedElem(ExtMachInst machInst);
     // AdvSIMD scalar shift by immediate
-    inline StaticInstPtr decodeNeonScShiftByImm(ExtMachInst machInst);
+    inline std::string decodeNeonScShiftByImm(ExtMachInst machInst);
 
     // AdvSIMD load/store
-    inline StaticInstPtr decodeNeonMem(ExtMachInst machInst);
+    inline std::string decodeNeonMem(ExtMachInst machInst);
 }
 
 namespace Aarch64
 {
-    StaticInstPtr decodeSveIntArithBinPred(ExtMachInst machInst);
-    StaticInstPtr decodeSveIntReduc(ExtMachInst machInst);
-    StaticInstPtr decodeSveShiftByImmPred(ExtMachInst machInst);
-    StaticInstPtr decodeSveIntArithUnaryPred(ExtMachInst machInst);
-    StaticInstPtr decodeSveIntMulAdd(ExtMachInst machInst);
-    StaticInstPtr decodeSveIntArithUnpred(ExtMachInst machInst);
-    StaticInstPtr decodeSveIntLogUnpred(ExtMachInst machInst);
-    StaticInstPtr decodeSveIndexGen(ExtMachInst machInst);
-    StaticInstPtr decodeSveStackAlloc(ExtMachInst machInst);
-    StaticInstPtr decodeSveShiftByImmUnpred(ExtMachInst machInst);
-    StaticInstPtr decodeSveCompVecAddr(ExtMachInst machInst);
-    StaticInstPtr decodeSveIntMiscUnpred(ExtMachInst machInst);
-    StaticInstPtr decodeSveElemCount(ExtMachInst machInst);
-    StaticInstPtr decodeSveLogMaskImm(ExtMachInst machInst);
-    StaticInstPtr decodeSveIntWideImmPred(ExtMachInst machInst);
-    StaticInstPtr decodeSvePermExtract(ExtMachInst machInst);
-    StaticInstPtr decodeSvePermUnpred(ExtMachInst machInst);
-    StaticInstPtr decodeSvePermPredicates(ExtMachInst machInst);
-    StaticInstPtr decodeSvePermIntlv(ExtMachInst machInst);
-    StaticInstPtr decodeSvePermPred(ExtMachInst machInst);
-    StaticInstPtr decodeSveSelVec(ExtMachInst machInst);
-    StaticInstPtr decodeSveIntCmpVec(ExtMachInst machInst);
-    StaticInstPtr decodeSveIntCmpUImm(ExtMachInst machInst);
-    StaticInstPtr decodeSveIntCmpSImm(ExtMachInst machInst);
-    StaticInstPtr decodeSvePredGen(ExtMachInst machInst);
-    StaticInstPtr decodeSvePredCount(ExtMachInst machInst);
-    StaticInstPtr decodeSveIntCmpSca(ExtMachInst machInst);
-    StaticInstPtr decodeSveIntWideImmUnpred(ExtMachInst machInst);
+    std::string decodeSveIntArithBinPred(ExtMachInst machInst);
+    std::string decodeSveIntReduc(ExtMachInst machInst);
+    std::string decodeSveShiftByImmPred(ExtMachInst machInst);
+    std::string decodeSveIntArithUnaryPred(ExtMachInst machInst);
+    std::string decodeSveIntMulAdd(ExtMachInst machInst);
+    std::string decodeSveIntArithUnpred(ExtMachInst machInst);
+    std::string decodeSveIntLogUnpred(ExtMachInst machInst);
+    std::string decodeSveIndexGen(ExtMachInst machInst);
+    std::string decodeSveStackAlloc(ExtMachInst machInst);
+    std::string decodeSveShiftByImmUnpred(ExtMachInst machInst);
+    std::string decodeSveCompVecAddr(ExtMachInst machInst);
+    std::string decodeSveIntMiscUnpred(ExtMachInst machInst);
+    std::string decodeSveElemCount(ExtMachInst machInst);
+    std::string decodeSveLogMaskImm(ExtMachInst machInst);
+    std::string decodeSveIntWideImmPred(ExtMachInst machInst);
+    std::string decodeSvePermExtract(ExtMachInst machInst);
+    std::string decodeSvePermUnpred(ExtMachInst machInst);
+    std::string decodeSvePermPredicates(ExtMachInst machInst);
+    std::string decodeSvePermIntlv(ExtMachInst machInst);
+    std::string decodeSvePermPred(ExtMachInst machInst);
+    std::string decodeSveSelVec(ExtMachInst machInst);
+    std::string decodeSveIntCmpVec(ExtMachInst machInst);
+    std::string decodeSveIntCmpUImm(ExtMachInst machInst);
+    std::string decodeSveIntCmpSImm(ExtMachInst machInst);
+    std::string decodeSvePredGen(ExtMachInst machInst);
+    std::string decodeSvePredCount(ExtMachInst machInst);
+    std::string decodeSveIntCmpSca(ExtMachInst machInst);
+    std::string decodeSveIntWideImmUnpred(ExtMachInst machInst);
 
-    StaticInstPtr decodeSveMultiplyAddUnpred(ExtMachInst machInst);
-    StaticInstPtr decodeSveMultiplyIndexed(ExtMachInst machInst);
+    std::string decodeSveMultiplyAddUnpred(ExtMachInst machInst);
+    std::string decodeSveMultiplyIndexed(ExtMachInst machInst);
 
-    StaticInstPtr decodeSveFpFastReduc(ExtMachInst machInst);
-    StaticInstPtr decodeSveFpUnaryUnpred(ExtMachInst machInst);
-    StaticInstPtr decodeSveFpCmpZero(ExtMachInst machInst);
-    StaticInstPtr decodeSveFpAccumReduc(ExtMachInst machInst);
-    StaticInstPtr decodeSveFpArithUnpred(ExtMachInst machInst);
-    StaticInstPtr decodeSveFpArithPred(ExtMachInst machInst);
-    StaticInstPtr decodeSveFpUnaryPred(ExtMachInst machInst);
-    StaticInstPtr decodeSveFpCmpVec(ExtMachInst machInst);
-    StaticInstPtr decodeSveFpFusedMulAdd(ExtMachInst machInst);
-    StaticInstPtr decodeSveFpCplxAdd(ExtMachInst machInst);
-    StaticInstPtr decodeSveFpCplxMulAddVec(ExtMachInst machInst);
-    StaticInstPtr decodeSveFpMulAddIndexed(ExtMachInst machInst);
-    StaticInstPtr decodeSveFpCplxMulAddIndexed(ExtMachInst machInst);
-    StaticInstPtr decodeSveFpMulIndexed(ExtMachInst machInst);
+    std::string decodeSveFpFastReduc(ExtMachInst machInst);
+    std::string decodeSveFpUnaryUnpred(ExtMachInst machInst);
+    std::string decodeSveFpCmpZero(ExtMachInst machInst);
+    std::string decodeSveFpAccumReduc(ExtMachInst machInst);
+    std::string decodeSveFpArithUnpred(ExtMachInst machInst);
+    std::string decodeSveFpArithPred(ExtMachInst machInst);
+    std::string decodeSveFpUnaryPred(ExtMachInst machInst);
+    std::string decodeSveFpCmpVec(ExtMachInst machInst);
+    std::string decodeSveFpFusedMulAdd(ExtMachInst machInst);
+    std::string decodeSveFpCplxAdd(ExtMachInst machInst);
+    std::string decodeSveFpCplxMulAddVec(ExtMachInst machInst);
+    std::string decodeSveFpMulAddIndexed(ExtMachInst machInst);
+    std::string decodeSveFpCplxMulAddIndexed(ExtMachInst machInst);
+    std::string decodeSveFpMulIndexed(ExtMachInst machInst);
 
-    StaticInstPtr decodeSveMemGather32(ExtMachInst machInst);
-    StaticInstPtr decodeSveMemContigLoad(ExtMachInst machInst);
-    StaticInstPtr decodeSveMemGather64(ExtMachInst machInst);
-    StaticInstPtr decodeSveMemStore(ExtMachInst machInst);
+    std::string decodeSveMemGather32(ExtMachInst machInst);
+    std::string decodeSveMemContigLoad(ExtMachInst machInst);
+    std::string decodeSveMemGather64(ExtMachInst machInst);
+    std::string decodeSveMemStore(ExtMachInst machInst);
 }
 
 
     template<template <typename T> class Base>
-    StaticInstPtr
+    std::string
     newNeonMemInst(const unsigned size,
                    const ExtMachInst &machInst,
                    const RegIndex dest, const RegIndex ra,
@@ -107109,7 +107109,7 @@ namespace Aarch64
     }
 
     template<template <typename T> class Base>
-    StaticInstPtr
+    std::string
     newNeonMixInst(const unsigned size,
                    const ExtMachInst &machInst,
                    const RegIndex dest, const RegIndex op1,
@@ -107130,41 +107130,41 @@ namespace Aarch64
     }
 
 
-    StaticInstPtr
+    std::string
     decodeNeonMem(ExtMachInst machInst);
-    StaticInstPtr
+    std::string
     decodeNeonData(ExtMachInst machInst);
-    StaticInstPtr
+    std::string
     decodeAdvancedSIMD(ExtMachInst machInst);
     
     bool
     wrongVLdmStmRegs(IntRegIndex start_reg, uint8_t count, bool single);
-    StaticInstPtr
+    std::string
     decodeExtensionRegLoadStore(ExtMachInst machInst);
     
-    StaticInstPtr
+    std::string
     decodeShortFpTransfer(ExtMachInst machInst);
     IntRegIndex decodeFpVd(ExtMachInst machInst, uint32_t size, bool isInt);
     IntRegIndex decodeFpVm(ExtMachInst machInst, uint32_t size, bool isInt);
     IntRegIndex decodeFpVn(ExtMachInst machInst, uint32_t size);
     
-    StaticInstPtr
+    std::string
     decodeVfpData(ExtMachInst machInst);
     
-    StaticInstPtr
+    std::string
     decodeMcrMrc14(ExtMachInst machInst);
     
-    StaticInstPtr decodeMcrMrc14(ExtMachInst machInst);
-    StaticInstPtr decodeMcrMrc15(ExtMachInst machInst);
+    std::string decodeMcrMrc14(ExtMachInst machInst);
+    std::string decodeMcrMrc15(ExtMachInst machInst);
     
-    StaticInstPtr
+    std::string
     decodeMcrrMrrc15(ExtMachInst machInst);
     
-    StaticInstPtr
+    std::string
     decodeCryptoAES(ExtMachInst machInst);
-    StaticInstPtr
+    std::string
     decodeCryptoThreeRegSHA(ExtMachInst machInst);
-    StaticInstPtr
+    std::string
     decodeCryptoTwoRegSHA(ExtMachInst machInst);
     
 // ArmUnconditional::armUnconditional(([], {}))
