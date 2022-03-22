@@ -38064,7 +38064,7 @@ class Xpaclri : public RegOp
 
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ>
-    std::string
+    StaticInstPtr
     decodeNeonSThreeImmHAndWReg(bool q, unsigned size, ExtMachInst machInst,
                                 IntRegIndex dest, IntRegIndex op1,
                                 IntRegIndex op2, uint64_t imm)
@@ -104515,30 +104515,30 @@ class SveZip2 : public SveBinUnpredOp
                                 IntRegIndex zt, IntRegIndex pg, IntRegIndex rn,
                                 int8_t imm)
     {
-        const char* mn = "st1";
-        switch (dtype) {
-          case 0x0:
-            return new Base<uint8_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
-          case 0x1:
-            return new Base<uint16_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
-          case 0x2:
-            return new Base<uint32_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
-          case 0x3:
-            return new Base<uint64_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
-          case 0x5:
-            return new Base<uint16_t, uint16_t>(mn, machInst, zt, pg, rn, imm);
-          case 0x6:
-            return new Base<uint32_t, uint16_t>(mn, machInst, zt, pg, rn, imm);
-          case 0x7:
-            return new Base<uint64_t, uint16_t>(mn, machInst, zt, pg, rn, imm);
-          case 0xa:
-            return new Base<uint32_t, uint32_t>(mn, machInst, zt, pg, rn, imm);
-          case 0xb:
-            return new Base<uint64_t, uint32_t>(mn, machInst, zt, pg, rn, imm);
-          case 0xf:
-            return new Base<uint64_t, uint64_t>(mn, machInst, zt, pg, rn, imm);
-        }
-        return new Unknown64(machInst);
+        return  "st1";
+        // switch (dtype) {
+        //   case 0x0:
+        //     return new Base<uint8_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0x1:
+        //     return new Base<uint16_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0x2:
+        //     return new Base<uint32_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0x3:
+        //     return new Base<uint64_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0x5:
+        //     return new Base<uint16_t, uint16_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0x6:
+        //     return new Base<uint32_t, uint16_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0x7:
+        //     return new Base<uint64_t, uint16_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0xa:
+        //     return new Base<uint32_t, uint32_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0xb:
+        //     return new Base<uint64_t, uint32_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0xf:
+        //     return new Base<uint64_t, uint64_t>(mn, machInst, zt, pg, rn, imm);
+        // }
+        // return new Unknown64(machInst);
     }
 
     // NOTE: SVE load-and-replicate instructions are decoded with

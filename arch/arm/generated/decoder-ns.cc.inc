@@ -88659,7 +88659,8 @@ namespace Aarch64
             uint64_t immhi = bits(machInst, 23, 5);
             uint64_t imm = (immlo << 0) | (immhi << 2);
             if (bits(machInst, 31) == 0)
-                return new AdrXImm(machInst, rdzr, INTREG_ZERO, sext<21>(imm));
+				return "adr";
+                // return new AdrXImm(machInst, rdzr, INTREG_ZERO, sext<21>(imm));
             else
 //                return new AdrpXImm(machInst, rdzr, INTREG_ZERO,
 //                                    sext<33>(imm << 12));
@@ -89218,10 +89219,11 @@ namespace Aarch64
                         }
                         uint32_t iss = msrMrs64IssBuild(read, op0, op1, crn, crm, op2, rt);
                         if (read) {
-                            StaticInstPtr si = new Mrs64(machInst, rt, miscReg, iss);
-                            if (miscRegInfo[miscReg][MISCREG_UNVERIFIABLE])
-                                si->setFlag(StaticInst::IsUnverifiable);
-                            return si;
+							return "mrs";
+                            // StaticInstPtr si = new Mrs64(machInst, rt, miscReg, iss);
+                            // if (miscRegInfo[miscReg][MISCREG_UNVERIFIABLE])
+                            //     si->setFlag(StaticInst::IsUnverifiable);
+                            // return si;
                         } else {
                             switch (miscReg) {
                               case MISCREG_DC_ZVA_Xt:
@@ -95213,9 +95215,10 @@ namespace Aarch64
                 return "unknown";
 
             else
-                return decodeNeonSThreeImmHAndWReg<SqdmlalElemX,
-                                                   SqdmlalElem2X>(
-                    q, size, machInst, vd, vn, vm, index);
+				return "sqdmlal";
+                // return decodeNeonSThreeImmHAndWReg<SqdmlalElemX,
+                //                                    SqdmlalElem2X>(
+                //     q, size, machInst, vd, vn, vm, index);
           case 0x4:
             if (u && !(size == 0x0 || size == 0x3))
 //                return decodeNeonUThreeImmHAndWReg<MlsElemDX, MlsElemQX>(
@@ -101036,12 +101039,12 @@ namespace Aarch64
                     uint8_t xs = bits(machInst, 22);
                     uint8_t ff = bits(machInst, 13);
                     if (bits(machInst, 14)) {
-                        return
-                           new SveIndexedMemSV<uint32_t, uint16_t,
-                                               SveGatherLoadSVMicroop,
-                                               SveFirstFaultWritebackMicroop>(
-                            ff ? "ldff1" : "ld1", machInst, MemReadOp, zt, pg,
-                            rn, zm, true, xs, true, ff);
+                        // return
+                        //    new SveIndexedMemSV<uint32_t, uint16_t,
+                        //                        SveGatherLoadSVMicroop,
+                        //                        SveFirstFaultWritebackMicroop>(
+                        //     ff ? "ldff1" : "ld1", machInst, MemReadOp, zt, pg,
+                        //     rn, zm, true, xs, true, ff);
 						return ff ? "ldff1" : "ld1";
                     } else {
                         // return
@@ -105573,7 +105576,7 @@ namespace Aarch64
 //                    machInst,
 //                    csprintf("miscreg crn:%d opc1:%d crm:%d opc2:%d %s unknown",
 //                    crn, opc1, crm, opc2, isRead ? "read" : "write"));
-            return "mrc unknown" : "mcr unknown";
+            return isRead ? "mrc unknown" : "mcr unknown";
           default:
             uint32_t iss = mcrMrcIssBuild(isRead, crm, rt, crn, opc1, opc2);
             if (isRead) {

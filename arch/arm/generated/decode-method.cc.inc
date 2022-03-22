@@ -7621,7 +7621,7 @@ ArmISA::Decoder::decodeInst(ArmISA::ExtMachInst machInst)
           
           // IllegalExec::illegalExec(([], {}))
           // return new IllegalExecInst(machInst);
-          return "unknown"
+          return "unknown";
           // break;
         }
       return "gem5_unreachable";
@@ -7630,7 +7630,7 @@ ArmISA::Decoder::decodeInst(ArmISA::ExtMachInst machInst)
       
       // DebugStep::debugStep(([], {}))
       // return new DebugStep(machInst);
-      return "unknown"
+      return "unknown";
       // break;
     }
   }
