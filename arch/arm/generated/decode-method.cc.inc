@@ -3863,10 +3863,7 @@ ArmISA::Decoder::decodeInst(ArmISA::ExtMachInst machInst)
 
                               } else {
                                   // bit 27:25=111
-                                  switch(decoderFlavor){
-                                  default:
                                       return decodeFpAdvSIMD<GenericDecoder>(machInst);
-                                  }
                               }
                           }
                           break;
@@ -7622,7 +7619,8 @@ ArmISA::Decoder::decodeInst(ArmISA::ExtMachInst machInst)
         default:
           
           // IllegalExec::illegalExec(([], {}))
-          return new IllegalExecInst(machInst);
+          // return new IllegalExecInst(machInst);
+          return "unknown"
           break;
         }
       return "gem5_unreachable";
@@ -7632,6 +7630,6 @@ ArmISA::Decoder::decodeInst(ArmISA::ExtMachInst machInst)
       // DebugStep::debugStep(([], {}))
       // return new DebugStep(machInst);
       return "unknown"
-      break;
+      // break;
     }
   }

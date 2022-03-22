@@ -38690,7 +38690,7 @@ class Xpaclri : public RegOp
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ,
               template <typename T> class BaseBQ>
-    ArmISAInst
+    StaticInstPtr
     decodeNeonUAcrossLanesLongReg(bool q, unsigned size, ExtMachInst machInst,
                                   IntRegIndex dest, IntRegIndex op1)
     {
@@ -38720,7 +38720,7 @@ class Xpaclri : public RegOp
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ,
               template <typename T> class BaseBQ>
-    ArmISAInst
+    StaticInstPtr
     decodeNeonSAcrossLanesLongReg(bool q, unsigned size, ExtMachInst machInst,
                                   IntRegIndex dest, IntRegIndex op1)
     {
@@ -87943,7 +87943,7 @@ class Zip2QX : public DataX2RegOp
     // Decodes ternary, destructive, predicated (merging) SVE instructions,
     // handling unsigned variants only. XXX: zeroing for CMP instructions.
     template <template <typename T> class Base>
-    std::string
+    StaticInstPtr
     decodeSveTerPredU(unsigned size, ExtMachInst machInst,
                       IntRegIndex dest, IntRegIndex op1, IntRegIndex op2,
                       IntRegIndex gp)
@@ -107090,7 +107090,7 @@ namespace Aarch64
 
 
     template<template <typename T> class Base>
-    ArmISAInst
+    StaticInstPtr
     newNeonMemInst(const unsigned size,
                    const ExtMachInst &machInst,
                    const RegIndex dest, const RegIndex ra,
@@ -107111,7 +107111,7 @@ namespace Aarch64
     }
 
     template<template <typename T> class Base>
-    std::string
+    StaticInstPtr
     newNeonMixInst(const unsigned size,
                    const ExtMachInst &machInst,
                    const RegIndex dest, const RegIndex op1,
