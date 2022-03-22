@@ -86216,42 +86216,21 @@ VLdmStm::VLdmStm(ExtMachInst machInst, IntRegIndex rn,
 //                        SveDeIntrlv2Microop>(
 //                               nm[numregs][esize], machInst, MemReadOp,
 //                               zt, pg, xn, imm, numregs);
-                return new SveLdStructSI<etype,
-                        SveLoadRegImmMicroop,
-                        SveLoadRegImmMicroop,
-                        SveDeIntrlv2Microop>(
-                        SveDeIntrlv2Microop>(
-                               nm[numregs][esize], machInst, MemReadOp,
-                               nm[numregs][esize], machInst, MemReadOp,
-                               zt, pg, xn, imm, numregs);
+				return nm[numregs][esize];
             case 3:
 //                return new SveLdStructSI<etype,
 //                        SveLoadRegImmMicroop,
 //                        SveDeIntrlv3Microop>(
 //                               nm[numregs][esize], machInst, MemReadOp,
 //                               zt, pg, xn, imm, numregs);
-                return new SveLdStructSI<etype,
-                        SveLoadRegImmMicroop,
-                        SveLoadRegImmMicroop,
-                        SveDeIntrlv3Microop>(
-                        SveDeIntrlv3Microop>(
-                               nm[numregs][esize], machInst, MemReadOp,
-                               nm[numregs][esize], machInst, MemReadOp,
-                               zt, pg, xn, imm, numregs);
+				return nm[numregs][esize];
             case 4:
 //                return new SveLdStructSI<etype,
 //                        SveLoadRegImmMicroop,
 //                        SveDeIntrlv4Microop>(
 //                               nm[numregs][esize], machInst, MemReadOp,
 //                               zt, pg, xn, imm, numregs);
-                return new SveLdStructSI<etype,
-                        SveLoadRegImmMicroop,
-                        SveLoadRegImmMicroop,
-                        SveDeIntrlv4Microop>(
-                        SveDeIntrlv4Microop>(
-                               nm[numregs][esize], machInst, MemReadOp,
-                               nm[numregs][esize], machInst, MemReadOp,
-                               zt, pg, xn, imm, numregs);
+				return nm[numregs][esize];
         }
 //        return new Unknown64(machInst);
         return "unknown";
@@ -86408,42 +86387,21 @@ VLdmStm::VLdmStm(ExtMachInst machInst, IntRegIndex rn,
 //                        SveDeIntrlv2Microop>(
 //                               nm[numregs][esize], machInst, MemReadOp,
 //                               zt, pg, xn, xm, numregs);
-                return new SveLdStructSS<etype,
-                        SveLoadRegRegMicroop,
-                        SveLoadRegRegMicroop,
-                        SveDeIntrlv2Microop>(
-                        SveDeIntrlv2Microop>(
-                               nm[numregs][esize], machInst, MemReadOp,
-                               nm[numregs][esize], machInst, MemReadOp,
-                               zt, pg, xn, xm, numregs);
+				return nm[numregs][esize];
             case 3:
 //                return new SveLdStructSS<etype,
 //                        SveLoadRegRegMicroop,
 //                        SveDeIntrlv3Microop>(
 //                               nm[numregs][esize], machInst, MemReadOp,
 //                               zt, pg, xn, xm, numregs);
-                return new SveLdStructSS<etype,
-                        SveLoadRegRegMicroop,
-                        SveLoadRegRegMicroop,
-                        SveDeIntrlv3Microop>(
-                        SveDeIntrlv3Microop>(
-                               nm[numregs][esize], machInst, MemReadOp,
-                               nm[numregs][esize], machInst, MemReadOp,
-                               zt, pg, xn, xm, numregs);
+				return nm[numregs][esize];
             case 4:
 //                return new SveLdStructSS<etype,
 //                        SveLoadRegRegMicroop,
 //                        SveDeIntrlv4Microop>(
 //                               nm[numregs][esize], machInst, MemReadOp,
 //                               zt, pg, xn, xm, numregs);
-                return new SveLdStructSS<etype,
-                        SveLoadRegRegMicroop,
-                        SveLoadRegRegMicroop,
-                        SveDeIntrlv4Microop>(
-                        SveDeIntrlv4Microop>(
-                               nm[numregs][esize], machInst, MemReadOp,
-                               nm[numregs][esize], machInst, MemReadOp,
-                               zt, pg, xn, xm, numregs);
+				return nm[numregs][esize];
         }
 //        return new Unknown64(machInst);
         return "unknown";
@@ -86504,42 +86462,22 @@ VLdmStm::VLdmStm(ExtMachInst machInst, IntRegIndex rn,
 //                        SveIntrlv2Microop>(
 //                               nm[numregs][esize], machInst, MemWriteOp,
 //                               zt, pg, xn, xm, numregs);
-                return new SveStStructSS<etype,
-                        SveStoreRegRegMicroop,
-                        SveStoreRegRegMicroop,
-                        SveIntrlv2Microop>(
-                        SveIntrlv2Microop>(
-                               nm[numregs][esize], machInst, MemWriteOp,
-                               nm[numregs][esize], machInst, MemWriteOp,
-                               zt, pg, xn, xm, numregs);
+				return nm[numregs][esize];
             case 3:
 //                return new SveStStructSS<etype,
 //                        SveStoreRegRegMicroop,
 //                        SveIntrlv3Microop>(
 //                               nm[numregs][esize], machInst, MemWriteOp,
 //                               zt, pg, xn, xm, numregs);
-                return new SveStStructSS<etype,
-                        SveStoreRegRegMicroop,
-                        SveStoreRegRegMicroop,
-                        SveIntrlv3Microop>(
-                        SveIntrlv3Microop>(
-                               nm[numregs][esize], machInst, MemWriteOp,
-                               nm[numregs][esize], machInst, MemWriteOp,
-                               zt, pg, xn, xm, numregs);
+				return nm[numregs][esize];
             case 4:
 //                return new SveStStructSS<etype,
 //                        SveStoreRegRegMicroop,
 //                        SveIntrlv4Microop>(
 //                               nm[numregs][esize], machInst, MemWriteOp,
 //                               zt, pg, xn, xm, numregs);
-                return new SveStStructSS<etype,
-                        SveStoreRegRegMicroop,
-                        SveStoreRegRegMicroop,
-                        SveIntrlv4Microop>(
-                        SveIntrlv4Microop>(
-                               nm[numregs][esize], machInst, MemWriteOp,
-                               nm[numregs][esize], machInst, MemWriteOp,
-                               zt, pg, xn, xm, numregs);
+				return nm[numregs][esize];
+
         }
 //        return new Unknown64(machInst);
         return "unknown";
@@ -86586,159 +86524,159 @@ VLdmStm::VLdmStm(ExtMachInst machInst, IntRegIndex rn,
                                uint64_t imm, bool esizeIs32,
                                bool firstFault)
     {
-        const char* mn = firstFault ? "ldff1" : "ld1";
-        switch (dtype) {
-          case 0x0:
-            if (esizeIs32) {
-//                return new SveIndexedMemVI<int32_t, int8_t,
-//                                           SveGatherLoadVIMicroop,
-//                                           SveFirstFaultWritebackMicroop>(
-//                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-                return new SveIndexedMemVI<int32_t, int8_t,
-                                           SveGatherLoadVIMicroop,
-                                           SveGatherLoadVIMicroop,
-                                           SveFirstFaultWritebackMicroop>(
-                                           SveFirstFaultWritebackMicroop>(
-                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-            } else {
-//                return new SveIndexedMemVI<int64_t, int8_t,
-//                                           SveGatherLoadVIMicroop,
-//                                           SveFirstFaultWritebackMicroop>(
-//                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-                return new SveIndexedMemVI<int64_t, int8_t,
-                                           SveGatherLoadVIMicroop,
-                                           SveGatherLoadVIMicroop,
-                                           SveFirstFaultWritebackMicroop>(
-                                           SveFirstFaultWritebackMicroop>(
-                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-            }
-          case 0x1:
-            if (esizeIs32) {
-//                return new SveIndexedMemVI<uint32_t, uint8_t,
-//                                           SveGatherLoadVIMicroop,
-//                                           SveFirstFaultWritebackMicroop>(
-//                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-                return new SveIndexedMemVI<uint32_t, uint8_t,
-                                           SveGatherLoadVIMicroop,
-                                           SveGatherLoadVIMicroop,
-                                           SveFirstFaultWritebackMicroop>(
-                                           SveFirstFaultWritebackMicroop>(
-                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-            } else {
-//                return new SveIndexedMemVI<uint64_t, uint8_t,
-//                                           SveGatherLoadVIMicroop,
-//                                           SveFirstFaultWritebackMicroop>(
-//                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-                return new SveIndexedMemVI<uint64_t, uint8_t,
-                                           SveGatherLoadVIMicroop,
-                                           SveGatherLoadVIMicroop,
-                                           SveFirstFaultWritebackMicroop>(
-                                           SveFirstFaultWritebackMicroop>(
-                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-            }
-          case 0x2:
-            if (esizeIs32) {
-//                return new SveIndexedMemVI<int32_t, int16_t,
-//                                           SveGatherLoadVIMicroop,
-//                                           SveFirstFaultWritebackMicroop>(
-//                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-                return new SveIndexedMemVI<int32_t, int16_t,
-                                           SveGatherLoadVIMicroop,
-                                           SveGatherLoadVIMicroop,
-                                           SveFirstFaultWritebackMicroop>(
-                                           SveFirstFaultWritebackMicroop>(
-                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-            } else {
-//                return new SveIndexedMemVI<int64_t, int16_t,
-//                                           SveGatherLoadVIMicroop,
-//                                           SveFirstFaultWritebackMicroop>(
-//                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-                return new SveIndexedMemVI<int64_t, int16_t,
-                                           SveGatherLoadVIMicroop,
-                                           SveGatherLoadVIMicroop,
-                                           SveFirstFaultWritebackMicroop>(
-                                           SveFirstFaultWritebackMicroop>(
-                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-            }
-          case 0x3:
-            if (esizeIs32) {
-//                return new SveIndexedMemVI<uint32_t, uint16_t,
-//                                           SveGatherLoadVIMicroop,
-//                                           SveFirstFaultWritebackMicroop>(
-//                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-                return new SveIndexedMemVI<uint32_t, uint16_t,
-                                           SveGatherLoadVIMicroop,
-                                           SveGatherLoadVIMicroop,
-                                           SveFirstFaultWritebackMicroop>(
-                                           SveFirstFaultWritebackMicroop>(
-                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-            } else {
-//                return new SveIndexedMemVI<uint64_t, uint16_t,
-//                                           SveGatherLoadVIMicroop,
-//                                           SveFirstFaultWritebackMicroop>(
-//                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-                return new SveIndexedMemVI<uint64_t, uint16_t,
-                                           SveGatherLoadVIMicroop,
-                                           SveGatherLoadVIMicroop,
-                                           SveFirstFaultWritebackMicroop>(
-                                           SveFirstFaultWritebackMicroop>(
-                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-            }
-          case 0x4:
-            if (esizeIs32) {
-                break;
-            } else {
-//                return new SveIndexedMemVI<int64_t, int32_t,
-//                                           SveGatherLoadVIMicroop,
-//                                           SveFirstFaultWritebackMicroop>(
-//                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-                return new SveIndexedMemVI<int64_t, int32_t,
-                                           SveGatherLoadVIMicroop,
-                                           SveGatherLoadVIMicroop,
-                                           SveFirstFaultWritebackMicroop>(
-                                           SveFirstFaultWritebackMicroop>(
-                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-            }
-          case 0x5:
-            if (esizeIs32) {
-//                return new SveIndexedMemVI<uint32_t, uint32_t,
-//                                           SveGatherLoadVIMicroop,
-//                                           SveFirstFaultWritebackMicroop>(
-//                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-                return new SveIndexedMemVI<uint32_t, uint32_t,
-                                           SveGatherLoadVIMicroop,
-                                           SveGatherLoadVIMicroop,
-                                           SveFirstFaultWritebackMicroop>(
-                                           SveFirstFaultWritebackMicroop>(
-                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-            } else {
-//                return new SveIndexedMemVI<uint64_t, uint32_t,
-//                                           SveGatherLoadVIMicroop,
-//                                           SveFirstFaultWritebackMicroop>(
-//                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-                return new SveIndexedMemVI<uint64_t, uint32_t,
-                                           SveGatherLoadVIMicroop,
-                                           SveGatherLoadVIMicroop,
-                                           SveFirstFaultWritebackMicroop>(
-                                           SveFirstFaultWritebackMicroop>(
-                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-            }
-          case 0x7:
-            if (esizeIs32) {
-                break;
-            } else {
-//                return new SveIndexedMemVI<uint64_t, uint64_t,
-//                                           SveGatherLoadVIMicroop,
-//                                           SveFirstFaultWritebackMicroop>(
-//                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-                return new SveIndexedMemVI<uint64_t, uint64_t,
-                                           SveGatherLoadVIMicroop,
-                                           SveGatherLoadVIMicroop,
-                                           SveFirstFaultWritebackMicroop>(
-                                           SveFirstFaultWritebackMicroop>(
-                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
-            }
-        }
+        return firstFault ? "ldff1" : "ld1";
+//         switch (dtype) {
+//           case 0x0:
+//             if (esizeIs32) {
+// //                return new SveIndexedMemVI<int32_t, int8_t,
+// //                                           SveGatherLoadVIMicroop,
+// //                                           SveFirstFaultWritebackMicroop>(
+// //                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//                 return new SveIndexedMemVI<int32_t, int8_t,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveFirstFaultWritebackMicroop>(
+//                                            SveFirstFaultWritebackMicroop>(
+//                     mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//             } else {
+// //                return new SveIndexedMemVI<int64_t, int8_t,
+// //                                           SveGatherLoadVIMicroop,
+// //                                           SveFirstFaultWritebackMicroop>(
+// //                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//                 return new SveIndexedMemVI<int64_t, int8_t,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveFirstFaultWritebackMicroop>(
+//                                            SveFirstFaultWritebackMicroop>(
+//                     mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//             }
+//           case 0x1:
+//             if (esizeIs32) {
+// //                return new SveIndexedMemVI<uint32_t, uint8_t,
+// //                                           SveGatherLoadVIMicroop,
+// //                                           SveFirstFaultWritebackMicroop>(
+// //                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//                 return new SveIndexedMemVI<uint32_t, uint8_t,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveFirstFaultWritebackMicroop>(
+//                                            SveFirstFaultWritebackMicroop>(
+//                     mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//             } else {
+// //                return new SveIndexedMemVI<uint64_t, uint8_t,
+// //                                           SveGatherLoadVIMicroop,
+// //                                           SveFirstFaultWritebackMicroop>(
+// //                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//                 return new SveIndexedMemVI<uint64_t, uint8_t,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveFirstFaultWritebackMicroop>(
+//                                            SveFirstFaultWritebackMicroop>(
+//                     mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//             }
+//           case 0x2:
+//             if (esizeIs32) {
+// //                return new SveIndexedMemVI<int32_t, int16_t,
+// //                                           SveGatherLoadVIMicroop,
+// //                                           SveFirstFaultWritebackMicroop>(
+// //                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//                 return new SveIndexedMemVI<int32_t, int16_t,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveFirstFaultWritebackMicroop>(
+//                                            SveFirstFaultWritebackMicroop>(
+//                     mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//             } else {
+// //                return new SveIndexedMemVI<int64_t, int16_t,
+// //                                           SveGatherLoadVIMicroop,
+// //                                           SveFirstFaultWritebackMicroop>(
+// //                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//                 return new SveIndexedMemVI<int64_t, int16_t,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveFirstFaultWritebackMicroop>(
+//                                            SveFirstFaultWritebackMicroop>(
+//                     mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//             }
+//           case 0x3:
+//             if (esizeIs32) {
+// //                return new SveIndexedMemVI<uint32_t, uint16_t,
+// //                                           SveGatherLoadVIMicroop,
+// //                                           SveFirstFaultWritebackMicroop>(
+// //                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//                 return new SveIndexedMemVI<uint32_t, uint16_t,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveFirstFaultWritebackMicroop>(
+//                                            SveFirstFaultWritebackMicroop>(
+//                     mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//             } else {
+// //                return new SveIndexedMemVI<uint64_t, uint16_t,
+// //                                           SveGatherLoadVIMicroop,
+// //                                           SveFirstFaultWritebackMicroop>(
+// //                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//                 return new SveIndexedMemVI<uint64_t, uint16_t,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveFirstFaultWritebackMicroop>(
+//                                            SveFirstFaultWritebackMicroop>(
+//                     mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//             }
+//           case 0x4:
+//             if (esizeIs32) {
+//                 break;
+//             } else {
+// //                return new SveIndexedMemVI<int64_t, int32_t,
+// //                                           SveGatherLoadVIMicroop,
+// //                                           SveFirstFaultWritebackMicroop>(
+// //                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//                 return new SveIndexedMemVI<int64_t, int32_t,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveFirstFaultWritebackMicroop>(
+//                                            SveFirstFaultWritebackMicroop>(
+//                     mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//             }
+//           case 0x5:
+//             if (esizeIs32) {
+// //                return new SveIndexedMemVI<uint32_t, uint32_t,
+// //                                           SveGatherLoadVIMicroop,
+// //                                           SveFirstFaultWritebackMicroop>(
+// //                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//                 return new SveIndexedMemVI<uint32_t, uint32_t,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveFirstFaultWritebackMicroop>(
+//                                            SveFirstFaultWritebackMicroop>(
+//                     mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//             } else {
+// //                return new SveIndexedMemVI<uint64_t, uint32_t,
+// //                                           SveGatherLoadVIMicroop,
+// //                                           SveFirstFaultWritebackMicroop>(
+// //                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//                 return new SveIndexedMemVI<uint64_t, uint32_t,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveFirstFaultWritebackMicroop>(
+//                                            SveFirstFaultWritebackMicroop>(
+//                     mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//             }
+//           case 0x7:
+//             if (esizeIs32) {
+//                 break;
+//             } else {
+// //                return new SveIndexedMemVI<uint64_t, uint64_t,
+// //                                           SveGatherLoadVIMicroop,
+// //                                           SveFirstFaultWritebackMicroop>(
+// //                    mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//                 return new SveIndexedMemVI<uint64_t, uint64_t,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveGatherLoadVIMicroop,
+//                                            SveFirstFaultWritebackMicroop>(
+//                                            SveFirstFaultWritebackMicroop>(
+//                     mn, machInst, MemReadOp, zt, pg, zn, imm, firstFault);
+//             }
+//         }
 //        return new Unknown64(machInst);
         return "unknown";
 

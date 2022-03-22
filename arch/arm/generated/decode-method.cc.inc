@@ -4590,7 +4590,8 @@ ArmISA::Decoder::decodeInst(ArmISA::ExtMachInst machInst)
                             case 0x0:   
                               // Thumb16UncondBranch::thumb16UncondBranch(([], {}))
                               
-                                      return new B(machInst, sext<12>(bits(machInst, 10, 0) << 1), COND_UC);
+                                      // return new B(machInst, sext<12>(bits(machInst, 10, 0) << 1), COND_UC);
+                                      return "b";
                                   break;
                             
                             default:
