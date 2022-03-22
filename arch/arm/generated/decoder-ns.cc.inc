@@ -89248,7 +89248,7 @@ namespace Aarch64
 
 //                        return new FailUnimplemented(read ? "mrs" : "msr",
 //                            machInst, full_mnemonic);
-                        return "mrs" : "msr";
+                        return read ? "mrs" : "msr";
 
                     } else if (miscReg == MISCREG_IMPDEF_UNIMPL) {
                         auto full_mnemonic =
@@ -89263,7 +89263,7 @@ namespace Aarch64
 //                            read ? "mrs" : "msr",
 //                            machInst, miscReg, read, iss, full_mnemonic,
 //                            miscRegInfo[miscReg][MISCREG_WARN_NOT_FAIL]);
-                        return "mrs" : "msr";
+                        return read ? "mrs" : "msr";
 
                     } else if (miscRegInfo[miscReg][MISCREG_IMPLEMENTED]) {
                         if (miscReg == MISCREG_NZCV) {
@@ -89315,14 +89315,14 @@ namespace Aarch64
                             read ? "mrs" : "msr", miscRegName[miscReg]);
 //                        return new WarnUnimplemented(read ? "mrs" : "msr",
 //                                                     machInst, full_mnem);
-                        return "mrs" : "msr";
+                        return read ? "mrs" : "msr";
                     } else {
 //                        return new FailUnimplemented(read ? "mrs" : "msr",
 //                                    machInst,
 //                                    csprintf("%s %s",
 //                                      read ? "mrs" : "msr",
 //                                      miscRegName[miscReg]));
-                        return "mrs" : "msr";
+                        return read ? "mrs" : "msr";
                     }
                   }
                   break;
@@ -90871,8 +90871,7 @@ namespace Aarch64
 
 //            return new LdpStp(mnemonic, machInst, size, fp, load, noAlloc,
 //                    signExt, false, false, imm, mode, rn, rt, rt2);
-            return new LdpStp(mnemonic, machInst, size, fp, load, noAlloc,
-                    signExt, false, false, imm, mode, rn, rt, rt2);
+            return mnemonic;
           }
           // bit 29:27=111, 25=0
           case 0x3:
@@ -93281,7 +93280,7 @@ namespace Aarch64
 
 namespace Aarch64
 {
-template StaticInstPtr decodeFpAdvSIMD<GenericDecoder>(ExtMachInst machInst);
+template std::string decodeFpAdvSIMD<GenericDecoder>(ExtMachInst machInst);
 
 }
 namespace Aarch64
@@ -94797,9 +94796,7 @@ namespace Aarch64
 //                return new Unknown64(machInst);
                 return "unknown";
 
-            return decodeNeonSAcrossLanesLongReg<SaddlvDX, SaddlvQX,
-                                                 SaddlvBQX>(
-                q, size, machInst, vd, vn);
+            return "saddlv";
           case 0x0a:
             if (size_q == 0x4 || size == 0x3)
 //                return new Unknown64(machInst);
@@ -94829,9 +94826,7 @@ namespace Aarch64
 //                return new Unknown64(machInst);
                 return "unknown";
 
-            return decodeNeonUAcrossLanesLongReg<UaddlvDX, UaddlvQX,
-                                                 UaddlvBQX>(
-                q, size, machInst, vd, vn);
+            return "uaddlv";
           case 0x2a:
             if (size_q == 0x4 || size == 0x3)
 //                return new Unknown64(machInst);
@@ -101111,13 +101106,15 @@ namespace Aarch64
                                                SveFirstFaultWritebackMicroop>(
                             ff ? "ldff1" : "ld1", machInst, MemReadOp, zt, pg,
                             rn, zm, true, xs, true, ff);
+						return ff ? "ldff1" : "ld1";
                     } else {
-                        return
-                           new SveIndexedMemSV<int32_t, int16_t,
-                                               SveGatherLoadSVMicroop,
-                                               SveFirstFaultWritebackMicroop>(
-                            ff ? "ldff1" : "ld1", machInst, MemReadOp, zt, pg,
-                            rn, zm, true, xs, true, ff);
+                        // return
+                        //    new SveIndexedMemSV<int32_t, int16_t,
+                        //                        SveGatherLoadSVMicroop,
+                        //                        SveFirstFaultWritebackMicroop>(
+                        //     ff ? "ldff1" : "ld1", machInst, MemReadOp, zt, pg,
+                        //     rn, zm, true, xs, true, ff);
+						return ff ? "ldff1" : "ld1";
                     }
                 }
                 break;
@@ -105753,7 +105750,7 @@ namespace Aarch64
 //                return new FailUnimplemented(isRead ? "mrc" : "mcr", machInst,
 //                    csprintf("%s %s", isRead ? "mrc" : "mcr",
 //                        miscRegName[miscReg]));
-                return "mrc" : "mcr";
+                return isRead ? "mrc" : "mcr";
             }
         }
     }
@@ -105773,7 +105770,7 @@ namespace Aarch64
 //            return new FailUnimplemented(isRead ? "mrc" : "mcr", machInst,
 //                    csprintf("miscreg crm:%d opc1:%d 64-bit %s unknown",
 //                    crm, opc1, isRead ? "read" : "write"));
-            return "mrc" : "mcr";
+            return isRead ? "mrc" : "mcr";
           default:
             if (miscRegInfo[miscReg][MISCREG_WARN_NOT_FAIL]) {
                 std::string full_mnem = csprintf("%s %s",
@@ -105791,10 +105788,10 @@ namespace Aarch64
             if (miscRegInfo[miscReg][MISCREG_IMPLEMENTED]) {
                 uint32_t iss = mcrrMrrcIssBuild(isRead, crm, rt, rt2, opc1);
                 if (isRead) {
-                    StaticInstPtr si =  new Mrrc15(machInst, miscReg, rt2, rt, iss);
-                    if (miscRegInfo[miscReg][MISCREG_UNVERIFIABLE])
-                        si->setFlag(StaticInst::IsUnverifiable);
-                    return si;
+                    // StaticInstPtr si =  new Mrrc15(machInst, miscReg, rt2, rt, iss);
+                    // if (miscRegInfo[miscReg][MISCREG_UNVERIFIABLE])
+                    //     si->setFlag(StaticInst::IsUnverifiable);
+                    return "mrrc";
                 }
 //                return new Mcrr15(machInst, rt2, rt, miscReg, iss);
                 return "mcrr";
@@ -105803,7 +105800,7 @@ namespace Aarch64
 //                return new FailUnimplemented(isRead ? "mrrc" : "mcrr", machInst,
 //                    csprintf("%s %s",
 //                    isRead ? "mrrc" : "mcrr", miscRegName[miscReg]));
-                return "mrrc" : "mcrr";
+                return isRead ? "mrrc" : "mcrr";
             }
         }
     }

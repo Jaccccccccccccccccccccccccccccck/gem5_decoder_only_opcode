@@ -70,7 +70,7 @@ class BasicDecodeCache
             return entry.inst;
         }
 
-        entry.inst = decoder->decodeInst(mach_inst);
+        // entry.inst = decoder->decodeInst(mach_inst);
         instMap[mach_inst] = entry.inst;
         return entry.inst;
     }

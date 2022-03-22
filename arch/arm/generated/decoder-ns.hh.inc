@@ -38690,7 +38690,7 @@ class Xpaclri : public RegOp
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ,
               template <typename T> class BaseBQ>
-    std::string
+    ArmISAInst
     decodeNeonUAcrossLanesLongReg(bool q, unsigned size, ExtMachInst machInst,
                                   IntRegIndex dest, IntRegIndex op1)
     {
@@ -38720,7 +38720,7 @@ class Xpaclri : public RegOp
     template <template <typename T> class BaseD,
               template <typename T> class BaseQ,
               template <typename T> class BaseBQ>
-    std::string
+    ArmISAInst
     decodeNeonSAcrossLanesLongReg(bool q, unsigned size, ExtMachInst machInst,
                                   IntRegIndex dest, IntRegIndex op1)
     {
@@ -104389,41 +104389,42 @@ class SveZip2 : public SveBinUnpredOp
                                IntRegIndex rm, bool firstFaulting)
     {
         const char* mn = firstFaulting ? "ldff1" : "ld1";
-        switch (dtype) {
-          case 0x0:
-            return new Base<uint8_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
-          case 0x1:
-            return new Base<uint16_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
-          case 0x2:
-            return new Base<uint32_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
-          case 0x3:
-            return new Base<uint64_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
-          case 0x4:
-            return new Base<int64_t, int32_t>(mn, machInst, zt, pg, rn, rm);
-          case 0x5:
-            return new Base<uint16_t, uint16_t>(mn, machInst, zt, pg, rn, rm);
-          case 0x6:
-            return new Base<uint32_t, uint16_t>(mn, machInst, zt, pg, rn, rm);
-          case 0x7:
-            return new Base<uint64_t, uint16_t>(mn, machInst, zt, pg, rn, rm);
-          case 0x8:
-            return new Base<int64_t, int16_t>(mn, machInst, zt, pg, rn, rm);
-          case 0x9:
-            return new Base<int32_t, int16_t>(mn, machInst, zt, pg, rn, rm);
-          case 0xa:
-            return new Base<uint32_t, uint32_t>(mn, machInst, zt, pg, rn, rm);
-          case 0xb:
-            return new Base<uint64_t, uint32_t>(mn, machInst, zt, pg, rn, rm);
-          case 0xc:
-            return new Base<int64_t, int8_t>(mn, machInst, zt, pg, rn, rm);
-          case 0xd:
-            return new Base<int32_t, int8_t>(mn, machInst, zt, pg, rn, rm);
-          case 0xe:
-            return new Base<int16_t, int8_t>(mn, machInst, zt, pg, rn, rm);
-          case 0xf:
-            return new Base<uint64_t, uint64_t>(mn, machInst, zt, pg, rn, rm);
-        }
-        return new Unknown64(machInst);
+        return mn;
+        // switch (dtype) {
+        //   case 0x0:
+        //     return new Base<uint8_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0x1:
+        //     return new Base<uint16_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0x2:
+        //     return new Base<uint32_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0x3:
+        //     return new Base<uint64_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0x4:
+        //     return new Base<int64_t, int32_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0x5:
+        //     return new Base<uint16_t, uint16_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0x6:
+        //     return new Base<uint32_t, uint16_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0x7:
+        //     return new Base<uint64_t, uint16_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0x8:
+        //     return new Base<int64_t, int16_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0x9:
+        //     return new Base<int32_t, int16_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0xa:
+        //     return new Base<uint32_t, uint32_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0xb:
+        //     return new Base<uint64_t, uint32_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0xc:
+        //     return new Base<int64_t, int8_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0xd:
+        //     return new Base<int32_t, int8_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0xe:
+        //     return new Base<int16_t, int8_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0xf:
+        //     return new Base<uint64_t, uint64_t>(mn, machInst, zt, pg, rn, rm);
+        // }
+        // return new Unknown64(machInst);
     }
 
     // Decodes SVE contiguous load instructions, scalar plus immediate form.
@@ -104436,41 +104437,42 @@ class SveZip2 : public SveBinUnpredOp
     {
         assert(!(nonFaulting && replicate));
         const char* mn = replicate ? "ld1r" : (nonFaulting ? "ldnf1" : "ld1");
-        switch (dtype) {
-          case 0x0:
-            return new Base<uint8_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
-          case 0x1:
-            return new Base<uint16_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
-          case 0x2:
-            return new Base<uint32_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
-          case 0x3:
-            return new Base<uint64_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
-          case 0x4:
-            return new Base<int64_t, int32_t>(mn, machInst, zt, pg, rn, imm);
-          case 0x5:
-            return new Base<uint16_t, uint16_t>(mn, machInst, zt, pg, rn, imm);
-          case 0x6:
-            return new Base<uint32_t, uint16_t>(mn, machInst, zt, pg, rn, imm);
-          case 0x7:
-            return new Base<uint64_t, uint16_t>(mn, machInst, zt, pg, rn, imm);
-          case 0x8:
-            return new Base<int64_t, int16_t>(mn, machInst, zt, pg, rn, imm);
-          case 0x9:
-            return new Base<int32_t, int16_t>(mn, machInst, zt, pg, rn, imm);
-          case 0xa:
-            return new Base<uint32_t, uint32_t>(mn, machInst, zt, pg, rn, imm);
-          case 0xb:
-            return new Base<uint64_t, uint32_t>(mn, machInst, zt, pg, rn, imm);
-          case 0xc:
-            return new Base<int64_t, int8_t>(mn, machInst, zt, pg, rn, imm);
-          case 0xd:
-            return new Base<int32_t, int8_t>(mn, machInst, zt, pg, rn, imm);
-          case 0xe:
-            return new Base<int16_t, int8_t>(mn, machInst, zt, pg, rn, imm);
-          case 0xf:
-            return new Base<uint64_t, uint64_t>(mn, machInst, zt, pg, rn, imm);
-        }
-        return new Unknown64(machInst);
+        return mn;
+        // switch (dtype) {
+        //   case 0x0:
+        //     return new Base<uint8_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0x1:
+        //     return new Base<uint16_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0x2:
+        //     return new Base<uint32_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0x3:
+        //     return new Base<uint64_t, uint8_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0x4:
+        //     return new Base<int64_t, int32_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0x5:
+        //     return new Base<uint16_t, uint16_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0x6:
+        //     return new Base<uint32_t, uint16_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0x7:
+        //     return new Base<uint64_t, uint16_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0x8:
+        //     return new Base<int64_t, int16_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0x9:
+        //     return new Base<int32_t, int16_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0xa:
+        //     return new Base<uint32_t, uint32_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0xb:
+        //     return new Base<uint64_t, uint32_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0xc:
+        //     return new Base<int64_t, int8_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0xd:
+        //     return new Base<int32_t, int8_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0xe:
+        //     return new Base<int16_t, int8_t>(mn, machInst, zt, pg, rn, imm);
+        //   case 0xf:
+        //     return new Base<uint64_t, uint64_t>(mn, machInst, zt, pg, rn, imm);
+        // }
+        // return new Unknown64(machInst);
     }
 
     // Decodes SVE contiguous store instructions, scalar plus scalar form.
@@ -107088,7 +107090,7 @@ namespace Aarch64
 
 
     template<template <typename T> class Base>
-    std::string
+    ArmISAInst
     newNeonMemInst(const unsigned size,
                    const ExtMachInst &machInst,
                    const RegIndex dest, const RegIndex ra,

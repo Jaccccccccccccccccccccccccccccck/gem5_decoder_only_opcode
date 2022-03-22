@@ -7613,7 +7613,8 @@ ArmISA::Decoder::decodeInst(ArmISA::ExtMachInst machInst)
               
               // DecoderFault::decoderFault(([], {}))
               
-                      return new DecoderFaultInst(machInst);
+                      // return new DecoderFaultInst(machInst);
+                      return "unknown";
                   break;
             }
           return "gem5_unreachable";
@@ -7629,7 +7630,8 @@ ArmISA::Decoder::decodeInst(ArmISA::ExtMachInst machInst)
     default:
       
       // DebugStep::debugStep(([], {}))
-      return new DebugStep(machInst);
+      // return new DebugStep(machInst);
+      return "unknown"
       break;
     }
   }
