@@ -104482,30 +104482,30 @@ class SveZip2 : public SveBinUnpredOp
                                 IntRegIndex zt, IntRegIndex pg, IntRegIndex rn,
                                 IntRegIndex rm)
     {
-        const char* mn = "st1";
-        switch (dtype) {
-          case 0x0:
-            return new Base<uint8_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
-          case 0x1:
-            return new Base<uint16_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
-          case 0x2:
-            return new Base<uint32_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
-          case 0x3:
-            return new Base<uint64_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
-          case 0x5:
-            return new Base<uint16_t, uint16_t>(mn, machInst, zt, pg, rn, rm);
-          case 0x6:
-            return new Base<uint32_t, uint16_t>(mn, machInst, zt, pg, rn, rm);
-          case 0x7:
-            return new Base<uint64_t, uint16_t>(mn, machInst, zt, pg, rn, rm);
-          case 0xa:
-            return new Base<uint32_t, uint32_t>(mn, machInst, zt, pg, rn, rm);
-          case 0xb:
-            return new Base<uint64_t, uint32_t>(mn, machInst, zt, pg, rn, rm);
-          case 0xf:
-            return new Base<uint64_t, uint64_t>(mn, machInst, zt, pg, rn, rm);
-        }
-        return new Unknown64(machInst);
+        return "st1";
+        // switch (dtype) {
+        //   case 0x0:
+        //     return new Base<uint8_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0x1:
+        //     return new Base<uint16_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0x2:
+        //     return new Base<uint32_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0x3:
+        //     return new Base<uint64_t, uint8_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0x5:
+        //     return new Base<uint16_t, uint16_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0x6:
+        //     return new Base<uint32_t, uint16_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0x7:
+        //     return new Base<uint64_t, uint16_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0xa:
+        //     return new Base<uint32_t, uint32_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0xb:
+        //     return new Base<uint64_t, uint32_t>(mn, machInst, zt, pg, rn, rm);
+        //   case 0xf:
+        //     return new Base<uint64_t, uint64_t>(mn, machInst, zt, pg, rn, rm);
+        // }
+        // return new Unknown64(machInst);
     }
 
     // Decodes SVE contiguous store instructions, scalar plus immediate form.

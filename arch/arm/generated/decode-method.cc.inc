@@ -7622,7 +7622,7 @@ ArmISA::Decoder::decodeInst(ArmISA::ExtMachInst machInst)
           // IllegalExec::illegalExec(([], {}))
           // return new IllegalExecInst(machInst);
           return "unknown"
-          break;
+          // break;
         }
       return "gem5_unreachable";
     
