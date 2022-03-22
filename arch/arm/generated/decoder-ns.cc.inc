@@ -95302,9 +95302,10 @@ namespace Aarch64
                 return "unknown";
 
             else
-                return decodeNeonSThreeImmHAndWReg<SqdmlslElemX,
-                                                   SqdmlslElem2X>(
-                    q, size, machInst, vd, vn, vm, index);
+				return "sqdmlsl";
+                // return decodeNeonSThreeImmHAndWReg<SqdmlslElemX,
+                //                                    SqdmlslElem2X>(
+                //     q, size, machInst, vd, vn, vm, index);
           case 0x8:
             if (u || (size == 0x0 || size == 0x3))
 //                return new Unknown64(machInst);
