@@ -140,7 +140,7 @@ class Decoder : public InstDecoder
 
     StaticInstPtr decode(PCStateBase &pc) override;
 
-    static StaticInstPtr decodeInst(ExtMachInst mach_inst);
+    static std::string decodeInst(ExtMachInst mach_inst);
 
   public: // ARM-specific decoder state manipulation
     void
